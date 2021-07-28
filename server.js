@@ -12,12 +12,9 @@ const app = require('./controller/app');
 // configuration
 //---------------------------------------------------------------------
 const hostname = 'localhost';
-const PORT = process.env.PORT || 18336;
 
 //---------------------------------------------------------------------
 // mains
 //---------------------------------------------------------------------
 // start the server and start listening for incoming requests
-app.listen(PORT, hostname, () => {
-    console.log(`Server started and accessible via http://${hostname}:${PORT}/`);
-});
+app.listen(process.env.PORT || 5000)

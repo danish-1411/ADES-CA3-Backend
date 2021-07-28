@@ -18,6 +18,6 @@ const PORT = process.env.PORT || 3000;
 // mains
 //---------------------------------------------------------------------
 // start the server and start listening for incoming requests
-app.listen(port, hostname, () => {
-    console.log(`Server started and accessible via http://${hostname}:${port}/`);
+app.listen(PORT, hostname, () => {
+    console.log(`Server started and accessible via http://${hostname}:${PORT}/`);
 });

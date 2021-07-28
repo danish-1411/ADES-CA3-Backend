@@ -12,7 +12,7 @@ const app = require('./controller/app');
 // configuration
 //---------------------------------------------------------------------
 const hostname = 'localhost';
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 //---------------------------------------------------------------------
 // mains

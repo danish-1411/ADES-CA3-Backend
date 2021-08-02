@@ -21,7 +21,7 @@ var Review = {
                 console.log("Connected!");
                 var sql = `
                 INSERT INTO
-                    spgames.review
+                    Mk2cexMzmr.review
                     (content, rating, userid, gameid)
                 VALUES
                     (?, ?, ?, ?);
@@ -53,9 +53,9 @@ var Review = {
                 SELECT
 	                g.gameid, r.content, r.rating, u.username, r.created_at
                 FROM
-	                spgames.review AS r,
-	                spgames.game AS g,
-                    spgames.user as u
+                    Mk2cexMzmr.review AS r,
+                    Mk2cexMzmr.game AS g,
+                    Mk2cexMzmr.user as u
                 WHERE
 	                r.gameid = g.gameid
                     AND r.userid = u.userid
@@ -87,9 +87,9 @@ var Review = {
                 SELECT
 	                g.title, r.content, r.rating, u.username, u.email, r.created_at
                 FROM
-	                spgames.review AS r,
-	                spgames.game AS g,
-                    spgames.user as u
+                    Mk2cexMzmr.review AS r,
+                    Mk2cexMzmr.game AS g,
+                    Mk2cexMzmr.user as u
                 WHERE
 	                r.gameid = g.gameid
                     AND r.userid = u.userid
@@ -117,7 +117,7 @@ var Review = {
             }
             else {
                 console.log("Connected!");
-                var sql = 'SELECT * FROM spgames.review;';
+                var sql = 'SELECT * FROM Mk2cexMzmr.review;';
                 conn.query(sql, [], function (err, result) {
                     conn.end();
                     if (err) {
@@ -144,8 +144,8 @@ var Review = {
                 SELECT 
                     * 
                 FROM 
-                    spgames.review as r,
-                    spgames.user as u
+                    Mk2cexMzmr.review as r,
+                    Mk2cexMzmr.user as u
                 WHERE
                     reviewid = ?
                     AND u.userid = r.userid;`;

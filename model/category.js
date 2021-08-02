@@ -19,48 +19,13 @@ var Category={
                 console.log("Connected!");
                 var sql = `
                 INSERT INTO
-                    spgames.category
+                    Mk2cexMzmr.category
                     (catname, description)
                 VALUES
                     (?, ?);
                     `;
 
                 conn.query(sql, [catname, description], function (err, result) {
-                    conn.end();
-                    if (err) {
-                        console.log(err);
-                        return callback(err, null);
-                    }
-                    else {
-                        return callback(null, result);
-                    }
-                });
-            }
-        });
-    },
-    updateCategory: function (categoryid, data, callback) {
-        var catname     = data.catname;
-        var description = data.description;
-    
-        var conn = db.getConnection();
-        conn.connect(function (err) {
-            if (err) {
-                console.log(err);
-                return callback(err, null);
-            }
-            else {
-                console.log("Connected!");
-                var sql = `
-                UPDATE 
-	                spgames.category
-                SET
-                    catname = ?,
-                    description = ?
-                WHERE
-                    categoryid = ?;
-                `;
-
-                conn.query(sql, [catname, description, categoryid], function (err, result) {
                     conn.end();
                     if (err) {
                         console.log(err);
@@ -82,7 +47,7 @@ var Category={
             }
             else {
                 console.log("Connected!");
-                var sql = 'SELECT * FROM spgames.category;';
+                var sql = 'SELECT * FROM Mk2cexMzmr.category;';
                 conn.query(sql, [], function (err, result) {
                     conn.end();
                     if (err) {
@@ -108,7 +73,7 @@ var Category={
                 var sql = `SELECT 
                                 * 
                             FROM 
-                                spgames.category
+                                Mk2cexMzmr.category
                             WHERE
                                 categoryid = ?;`;
                 conn.query(sql, [categoryid], function (err, result) {

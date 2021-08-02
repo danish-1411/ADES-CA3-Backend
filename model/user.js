@@ -21,7 +21,7 @@ var User={
                     SELECT 
                         * 
                     FROM 
-                        spgames.user 
+                        Mk2cexMzmr.user 
                     WHERE 
                         username=? 
                         AND password=?`;
@@ -43,29 +43,6 @@ var User={
             }
         });
     },
-    getAllUsers: function (callback) {
-        var conn = db.getConnection();
-        conn.connect(function (err) {
-            if (err) {
-                console.log(err);
-                return callback(err, null);
-            }
-            else {
-                console.log("Connected!");
-                var sql = 'SELECT * FROM spgames.user;';
-                conn.query(sql, [], function (err, result) {
-                    conn.end();
-                    if (err) {
-                        console.log(err);
-                        return callback(err, null);
-                    } 
-                    else {
-                        return callback(null, result);
-                    }
-                });
-            }
-        });
-    },
     addUser: function (data, callback) {
         var username         = data.username;
         var email            = data.email;
@@ -81,7 +58,7 @@ var User={
                 console.log("Connected!");
                 var sql = `
                 INSERT INTO
-                    spgames.user
+                    Mk2cexMzmr.user
                 (username, email, password)
                 VALUES
                     (?, ?, ?);
@@ -112,7 +89,7 @@ var User={
                 var sql = ` SELECT
                                 userid, username, email, profile_pic_url, type
                             FROM 
-                                spgames.user
+                                Mk2cexMzmr.user
                             WHERE
                                 userid = ?;`;
                 conn.query(sql, [userid], function (err, result) {
@@ -140,7 +117,7 @@ var User={
                 var sql = ` SELECT
                                 type
                             FROM 
-                                spgames.user
+                                Mk2cexMzmr.user
                             WHERE
                                 userid = ?;`;
                 conn.query(sql, [userid], function (err, result) {

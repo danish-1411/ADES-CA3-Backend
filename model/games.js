@@ -23,7 +23,7 @@ var Game = {
                 console.log("Connected!");
                 var sql = `
                 INSERT INTO
-                    spgames.game
+                    Mk2cexMzmr.game
                     (title, description, price, platform, categoryid, year, images)
                 VALUES
                     (?, ?, ?, ?, ?, ?, ?);
@@ -54,8 +54,8 @@ var Game = {
                 var sql = ` SELECT 
                                 g.gameid, g.title, g.description, g.price, g.platform, c.categoryid, c.catname, g.year, g.created_at, g.images
                             FROM 
-                                spgames.category AS c,
-                                spgames.game AS g
+                                Mk2cexMzmr.category AS c,
+                                Mk2cexMzmr.game AS g
                             WHERE 
                                 g.price <= ?
                                 AND platform = ? 
@@ -86,82 +86,11 @@ var Game = {
                 var sql = ` SELECT 
                                 * 
                             FROM 
-                                spgames.game as g,
-                                spgames.category as c
+                                Mk2cexMzmr.game as g,
+                                Mk2cexMzmr.category as c
                             WHERE
                                 c.categoryid = g.categoryid`;
                 conn.query(sql, [], function (err, result) {
-                    conn.end();
-                    if (err) {
-                        console.log(err);
-                        return callback(err, null);
-                    }
-                    else {
-                        return callback(null, result);
-                    }
-                });
-            }
-        });
-    },
-    deleteGame: function (gameid, callback) {
-        var conn = db.getConnection();
-        conn.connect(function (err) {
-            if (err) {
-                console.log(err);
-                return callback(err, null);
-            }
-            else {
-                console.log("Connected!");
-                var sql = `                             
-                DELETE FROM
-	                spgames.game
-                WHERE
-                    gameid = ?;
-                    `;
-                conn.query(sql, [gameid], function (err, result) {
-                    conn.end();
-                    if (err) {
-                        console.log(err);
-                        return callback(err, null);
-                    }
-                    else {
-                        return callback(null, result);
-                    }
-                });
-            }
-        });
-    },
-    updateGame: function (gameid, data, callback) {
-        var title = data.title;
-        var description = data.description;
-        var price = data.price;
-        var platform = data.platform;
-        var categoryid = data.categoryid;
-        var year = data.year;
-
-        var conn = db.getConnection();
-        conn.connect(function (err) {
-            if (err) {
-                console.log(err);
-                return callback(err, null);
-            }
-            else {
-                console.log("Connected!");
-                var sql = `
-                UPDATE 
-	                spgames.game
-                SET
-                    title = ?,
-                    description = ?,
-                    price = ?,
-                    platform = ?,
-                    categoryid = ?,
-                    year = ?
-                WHERE
-                    gameid = ?;
-                `;
-
-                conn.query(sql, [title, description, price, platform, categoryid, year, gameid], function (err, result) {
                     conn.end();
                     if (err) {
                         console.log(err);
@@ -186,8 +115,8 @@ var Game = {
                 var sql = ` SELECT
                                 g.gameid, g.title, g.description, g.price, g.platform, c.catname, g.year, g.images
                             FROM
-                                spgames.category AS c,
-                                spgames.game AS g
+                                Mk2cexMzmr.category AS c,
+                                Mk2cexMzmr.game AS g
                             WHERE
                                 c.categoryid = g.categoryid
                                 AND gameid = ?;`;
@@ -216,8 +145,8 @@ var Game = {
                 var sql = ` SELECT 
                                 g.gameid, g.title, g.description, g.price, g.platform, c.categoryid, c.catname, g.year, g.created_at, g.images
                             FROM 
-                                spgames.category AS c,
-                                spgames.game AS g
+                                Mk2cexMzmr.category AS c,
+                                Mk2cexMzmr.game AS g
                             WHERE 
                                 c.catname = ?
                                 AND c.categoryid = g.categoryid;`;
@@ -246,8 +175,8 @@ var Game = {
                 var sql = ` SELECT 
                                 g.gameid, g.title, g.description, g.price, g.platform, c.categoryid, c.catname, g.year, g.created_at, g.images
                             FROM 
-                                spgames.category AS c,
-                                spgames.game AS g
+                                Mk2cexMzmr.category AS c,
+                                Mk2cexMzmr.game AS g
                             WHERE 
                                 g.gameid <= 10
                                 AND c.categoryid = g.categoryid;`;

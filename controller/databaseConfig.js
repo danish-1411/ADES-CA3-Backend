@@ -13,10 +13,10 @@ var mysql = require('mysql');
 var dbconnect = {
     getConnection: function () {
         var conn = mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "p2043483",
-            database: "spgames"
+            host: "remotemysql.com",
+            user: "Mk2cexMzmr",
+            password: "dL4Xy5zZUg",
+            database: "Mk2cexMzmr"
         });
 
         return conn;

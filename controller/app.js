@@ -205,21 +205,6 @@ app.post('/game/', printDebugInfo, isLoggedInMiddleware, function (req, res) {
     });
 });
 
-app.post('/search', printDebugInfo, function (req, res) {
-    var price = req.body.price;
-    var title = req.body.title;
-    var platform = req.body.platform;
-
-    games.searchGames(price, platform, title, function (err, result) {
-        if (!err) {
-            res.status(200).send(result);
-        }
-        else {
-            res.status(500).send("Unknown error");
-        }
-    });
-});
-
 app.get('/games', printDebugInfo, function (req, res) {
     games.getAllGames(function (err, result) {
         if (!err) {
@@ -310,40 +295,6 @@ app.get('/category/:id', printDebugInfo, function (req, res) {
     });
 });
 
-app.delete('/game/:id', printDebugInfo, function (req, res) {
-    var gameid = req.params.id;
-
-    games.deleteGame(gameid, function (err, result) {
-        if (!err) {
-            res.status(204).send(result);
-        }
-        else {
-            res.status(500).send("Unknown error");
-        }
-    });
-});
-
-app.put('/game/:id', printDebugInfo, function (req, res) {
-    var data = {
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price,
-        platform: req.body.platform,
-        categoryid: req.body.categoryid,
-        year: req.body.year
-    };
-    var gameid = req.params.id;
-
-    games.updateGame(gameid, data, function (err, result) {
-        if (!err) {
-            res.status(204).send(result);
-        }
-        else {
-            res.status(500).send("Unknown error");
-        }
-    });
-});
-
 app.get('/game/:category', printDebugInfo, function (req, res) {
     var category = req.params.category;
 
@@ -369,18 +320,6 @@ app.get('/review/:id', printDebugInfo, function (req, res) {
         }
     });
 });
-
-app.get('/gamesforhome', printDebugInfo, function (req, res) {
-    games.getGamesForHome(function (err, result) {
-        if (!err) {
-            res.status(200).send(result);
-        }
-        else {
-            res.status(500).send("Unknown error");
-        }
-    });
-});
-
 
 //---------------------------------------------------------------------
 // exports

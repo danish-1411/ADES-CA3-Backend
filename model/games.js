@@ -42,38 +42,6 @@ var Game = {
             }
         });
     },
-    searchGames: function (price, platform, title, callback) {
-        var conn = db.getConnection();
-        conn.connect(function (err) {
-            if (err) {
-                console.log(err);
-                return callback(err, null);
-            }
-            else {
-                console.log("Connected!");
-                var sql = ` SELECT 
-                                g.gameid, g.title, g.description, g.price, g.platform, c.categoryid, c.catname, g.year, g.created_at, g.images
-                            FROM 
-                                Mk2cexMzmr.category AS c,
-                                Mk2cexMzmr.game AS g
-                            WHERE 
-                                g.price <= ?
-                                AND platform = ? 
-                                AND g.title LIKE '%${title}%'
-                                AND c.categoryid = g.categoryid;`;
-                conn.query(sql, [price, platform, title], function (err, result) {
-                    conn.end();
-                    if (err) {
-                        console.log(err);
-                        return callback(err, null);
-                    }
-                    else {
-                        return callback(null, result);
-                    }
-                });
-            }
-        });
-    },
     getAllGames: function (callback) {
         var conn = db.getConnection();
         conn.connect(function (err) {

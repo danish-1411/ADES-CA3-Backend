@@ -16,7 +16,6 @@ var review = require('../model/review')
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = require("../config");
 const isLoggedInMiddleware = require("../auth/isLoggedInMiddleware");
-const User = require('../model/user.js');
 
 
 //---------------------------------------------------------------------
